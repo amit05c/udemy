@@ -1,0 +1,33 @@
+.top-box{
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    display:inline-block;
+    /* position: relative; */
+    /* left: 400px; */
+    position: relative;
+    left: 400px;
+}
+
+.middle-box{
+    height: 200px;
+    width: 200px;
+    background-color: yellow;
+    display:inline-block;
+    /* position: relative; */
+    /* left: 200px; */
+    /* bottom: 200px; */
+    
+   
+}
+
+.bottom-box{
+    height: 200px;
+    width: 200px;
+    background-color: blue;
+    display:inline-block;
+    /* position: relative; */
+    /* bottom: 400px; */
+    position: relative;
+    right: 400px;
+}

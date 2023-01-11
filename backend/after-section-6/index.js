@@ -12,9 +12,11 @@ app.use("/tour",router)
 app.listen(8080,async()=>{
     
     try{
-        console.log("Listening on Port 8080")
+        await connection
+        console.log("Connected to DB")
     }
     catch(err){
         console.log(err)
     }
+    console.log("Listening on Port 8080")
 })

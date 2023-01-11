@@ -1,16 +1,17 @@
 
 
-// const tourdata= require("../dev-data/tourdata.json");
+ const tourdata= require("../dev-data/tourdata.json");
 const Tour = require("../models/tourModel");
 
-exports.createTour = async (req, res) => {
+const createTour = async (req, res) => {
     try {
         console.log(req.body)
-      const newTour = new Tour(req.body)
-     await newTour.save()
+        // let {name,duration}=req.body
+    //   const newTour = Tour({name,duration})
+    //  await newTour.save()
   
-    //   const newTour = await Tour.insertMany(tourdata);
-  
+       const newTour = await Tour.insertMany(tourdata);
+    // await Tour.deleteMany()
       res.status(201).json({
         status: 'success',
         data: {
@@ -18,10 +19,14 @@ exports.createTour = async (req, res) => {
         }
       });
     } catch (err) {
+      console.log(err)
       res.status(400).json({
         status: 'fail',
         message: err
       });
     }
   };
+  module.exports={
+    createTour
+  }
   

@@ -47,7 +47,15 @@ exports.createTour = async (req, res) => {
       let queryStr= JSON.stringify(queryObj)
      queryStr= queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match=> `$${match}`)
 
-    let tours= await Tour.find(JSON.parse(queryStr))
+    let query=  Tour.find(JSON.parse(queryStr))
+
+    if(req.query.sort){
+      console.log("amit")
+      console.log(req.query)
+      // console.log(await query)
+    query=query.sort(req.query.sort)
+    }
+    let tours= await query
       // SEND RESPONSE
       res.status(200).json({
         status: 'success',

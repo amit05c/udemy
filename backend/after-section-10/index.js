@@ -1,12 +1,13 @@
-const express= require("express")
-const { connection } = require("./config/db")
+const express= require("express");
+const { connection } = require("./config/db");
 const router = require("./routers/tourRouter")
 const cors= require("cors")
-
+const reviewRouter= require("./routers/reviewRouter")
 const app= express()
 app.use(cors())
 app.use(express.json())
 app.use("/tour",router)
+app.use("/review",reviewRouter)
 
 
 app.listen(8080,async()=>{

@@ -1,7 +1,7 @@
-
+const Review = require("../models/reviewModel")
 
 const createReview= async(req,res)=>{
-    const doc = await Model.create(req.body);
+    const doc = await Review.create(req.body);
 
     res.status(201).json({
       status: 'success',

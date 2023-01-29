@@ -89,16 +89,23 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: false
     }
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
   }
-  // {
-  //   toJSON: { virtuals: true },
-  //   toObject: { virtuals: true }
-  // }
 );
 
-// tourSchema.virtual('durationWeeks').get(function() {
-//   return this.duration / 7;
-// });
+tourSchema.virtual('durationWeeks').get(function() {
+  return this.duration / 7;
+});
+
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_id'
+});
+
 
 // DOCUMENT MIDDLEWARE: runs before .save() and .create()
 // tourSchema.pre('save', function(next) {

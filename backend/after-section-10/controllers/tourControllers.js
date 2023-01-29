@@ -47,8 +47,7 @@ exports.createTour = async (req, res) => {
       let queryStr= JSON.stringify(queryObj)
      queryStr= queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match=> `$${match}`)
 
-    let query=  Tour.find(JSON.parse(queryStr))
-
+    let query=  Tour.find(JSON.parse(queryStr)).populate("reviews")
     if(req.query.sort){
      let sortQuery= req.query.sort.split(",").join(" ") // for multiple sort 
     query=query.sort(sortQuery)
